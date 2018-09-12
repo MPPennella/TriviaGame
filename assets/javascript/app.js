@@ -8,8 +8,19 @@ var game = {
                 "Freddie Mercury",
                 "Paul McCartney"
             ],
-            img: "thin_white_duke.png",
+            img: "thin_white_duke.jpg",
             explanation: "David Bowie adpoted the performance personna of the Thin White Duke in 1975. Departing from his previous flamboyant glam personnas, the Duke dressed in more conservative cabaret attire. The Duke personna was short-lived, as it was quietly retired after pro-Fascist statements made while being interviewed as the Duke personna stirred up controversy."
+        },
+        {
+            questionText: "Which artist controversially won the 1989 Grammy Award for Best Hard Rock/Metal Performance Vocal or Instrumental?",
+            answers: [ 
+                "Jethro Tull",
+                "Simon and Garfunkel",
+                "AC/DC",
+                "Heart"
+            ],
+            img: "flute_heavy_metal.jpg",
+            explanation: "In a huge upset, Jethro Tull's album Crest of a Knave won the 1989 Grammy Award for Best Hard Rock/Metal Performance Vocal or Instrumental, beating out heavy favorite Metallica. Even the band themselves didn't expect to win, and chose not to attend the ceremony. After the win, the band's label took out an add depicting frontman Ian Anderson's signature instrument – the flute – declaring \"The flute is a heavy metal instrument\"."
         }
     ],
 
