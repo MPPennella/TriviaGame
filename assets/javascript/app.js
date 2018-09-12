@@ -52,11 +52,13 @@ var game = {
     }, 
 
     showAnswer() {
+        let question = game.currentQuestion;
+
         let target = $("#game");
         target.empty();
 
-        let answerImg = $("<img>").attr( {src:"assets/images/TEST.png", alt:"Placeholder" } );
-        let answerExpText = "Detailed explanation of answer";
+        let answerImg = $("<img>").attr( {src: question.img, alt: question.answers[0] } );
+        let answerExpText = question.explanation;
 
         target.append(answerImg);
         target.append( $("<div>").text(answerExpText) );
@@ -64,7 +66,7 @@ var game = {
         // Set timer to move to next phase
         // Placeholder
         let questionsLeft = game.questionList.length;
-        setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, 1000);
+        setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, 5*1000);
     },
 
     showScore() {
