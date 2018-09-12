@@ -68,7 +68,7 @@ var game = {
         let target = $("#game");
         target.empty();
 
-        let answerImg = $("<img>").attr( {src: question.img, alt: question.answers[0] } );
+        let answerImg = $("<img>").attr( {src: "assets/images/"+question.img, alt: question.answers[0] } );
         let answerExpText = question.explanation;
 
         target.append(answerImg);
