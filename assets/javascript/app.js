@@ -46,7 +46,7 @@ var game = {
         for (let i=0; i<question.answers.length; i++) {
             let answerBtn = $("<button>").text( question.answers[i]);
             answerBtn.on("click", game.showAnswer );
-            
+
             target.append(answerBtn);
         }
     }, 
@@ -63,8 +63,8 @@ var game = {
 
         // Set timer to move to next phase
         // Placeholder
-        let questionsLeft = false;
-        setTimeout( questionsLeft ? game.showNextQuestion : game.showScore, 1000);
+        let questionsLeft = game.questionList.length;
+        setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, 1000);
     },
 
     showScore() {
