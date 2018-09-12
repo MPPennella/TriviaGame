@@ -43,6 +43,18 @@ var game = {
 
         target.append(answerImg);
         target.append( $("<div>").text(answerExpText) );
+
+        // Set timer to move to next phase
+        // Placeholder
+        let questionsLeft = false;
+        setTimeout( questionsLeft ? game.askNextQuestion : game.showScore, 1000);
+    },
+
+    showScore() {
+        let target = $("#game");
+        target.empty();
+
+        target.append( $("<div>").text("Your final score is: ??") )
     }
 }
 
