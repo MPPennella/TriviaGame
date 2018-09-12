@@ -13,6 +13,9 @@ var game = {
         }
     ],
 
+    questionList: [],
+    currentQuestion: {},
+
     // Method setting up the game splash screen and loading questions
     start() {
         // Set up splash screen in #game
@@ -20,30 +23,32 @@ var game = {
         target.empty();
 
         let startButton = $("<button>").text("Start");
-        
         startButton.on("click", game.showNextQuestion);
-
         target.append(startButton);
         
-        // TODO: Determine random order of questions loaded from questionData array
-
+        // Copy questions from raw questionData array to questionList array that will be mutated
+        // TODO: Randomize order of questions loaded from questionData array
+        game.questionList = [...game.questionData];
     },
 
     showNextQuestion() {
+        // Remove a question from the array, set it to be the current question, and create a reference
+        let question = game.currentQuestion = game.questionList.pop();
+
         let target = $("#game");
         target.empty();
 
-        // Placeholder
-        let questionText = "What is the answer to this question?";
-
-        // Placeholder
-        let answer1Text = "Answer A";
-
-        let answer1Btn = $("<button>").text(answer1Text);
-        answer1Btn.on("click", game.showAnswer );
-
-        target.append($("<div>").text(questionText));
-        target.append(answer1Btn);
+        // Display the question
+        target.append($("<div>").text( question.questionText ));
+        
+        // Display buttons for each answer
+        // TODO: Randomize order of answers
+        for (let i=0; i<question.answers.length; i++) {
+            let answerBtn = $("<button>").text( question.answers[i]);
+            answerBtn.on("click", game.showAnswer );
+            
+            target.append(answerBtn);
+        }
     }, 
 
     showAnswer() {
