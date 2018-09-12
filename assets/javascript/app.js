@@ -74,6 +74,8 @@ var game = {
         target.empty();
 
         target.append( $("<div>").text("Your final score is: ??") )
+
+        // TODO: Add button to restart game
     }
 }
 
