@@ -9,7 +9,7 @@ var game = {
 
         let startButton = $("<button>").text("Start");
         
-        startButton.on("click", game.askNextQuestion);
+        startButton.on("click", game.showNextQuestion);
 
         target.append(startButton);
         
@@ -17,7 +17,7 @@ var game = {
 
     },
 
-    askNextQuestion() {
+    showNextQuestion() {
         let target = $("#game");
         target.empty();
 
@@ -47,7 +47,7 @@ var game = {
         // Set timer to move to next phase
         // Placeholder
         let questionsLeft = false;
-        setTimeout( questionsLeft ? game.askNextQuestion : game.showScore, 1000);
+        setTimeout( questionsLeft ? game.showNextQuestion : game.showScore, 1000);
     },
 
     showScore() {
