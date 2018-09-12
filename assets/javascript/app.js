@@ -1,5 +1,17 @@
 var game = {
-    questionData: [],
+    questionData: [
+        {
+            questionText: "Which of these artists was known as the Thin White Duke?",
+            answers: [ 
+                "David Bowie",
+                "Elton John",
+                "Freddie Mercury",
+                "Paul McCartney"
+            ],
+            img: "thin_white_duke.png",
+            explanation: "David Bowie adpoted the performance personna of the Thin White Duke in 1975. Departing from his previous flamboyant glam personnas, the Duke dressed in more conservative cabaret attire. The Duke personna was short-lived, as it was quietly retired after pro-Fascist statements made while being interviewed as the Duke personna stirred up controversy."
+        }
+    ],
 
     // Method setting up the game splash screen and loading questions
     start() {
