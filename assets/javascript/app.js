@@ -39,7 +39,7 @@ var game = {
         
         // Copy questions from raw questionData array to questionList array that will be mutated
         // TODO: Randomize order of questions loaded from questionData array
-        game.questionList = [...game.questionData];
+        game.questionList = game.randomize([...game.questionData]);
     },
 
     showNextQuestion() {
@@ -54,7 +54,7 @@ var game = {
         
         // Randomize order of answers
         question.answers = game.randomize(question.answers);
-        
+
         // Display buttons for each answer
         for (let i=0; i<question.answers.length; i++) {
             let answerBtn = $("<button>").text( question.answers[i]);
