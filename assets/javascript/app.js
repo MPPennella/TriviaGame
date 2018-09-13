@@ -63,7 +63,12 @@ var game = {
                 game.showAnswer();
             }
             console.log(game.timeLeft)
+            $(".timer").text(game.timeLeft);
         }, 1000);
+
+        // Display timer
+        target.append( $("<div>").text("Time Left: ") );
+        target.append( $("<div>").text(game.timeLeft).addClass("timer") );
 
         // Display the question
         target.append($("<div>").text( question.questionText ));
