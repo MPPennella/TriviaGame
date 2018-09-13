@@ -32,6 +32,11 @@ var game = {
     timer: 0,
     timeLeft: 0,
 
+    // Parameters for score tracking
+    correct: 0,
+    incorrect: 0,
+    timeouts: 0,
+
     // Method setting up the game splash screen and loading questions
     start() {
         // Set up splash screen in #game
@@ -46,7 +51,7 @@ var game = {
         game.questionList = game.randomize([...game.questionData]);
     },
 
-    // TODO: Determine if clicked answers are correct or incorrect
+    // TODO: Determine if clicked answers are correct or incorrect, and add to scoring trackers
     showNextQuestion() {
         // Remove a question from the array, set it to be the current question, and create a reference
         let question = game.currentQuestion = game.questionList.pop();
@@ -105,14 +110,15 @@ var game = {
         setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, 5*1000);
     },
 
-    // TODO: Implement scoring display tracking correct/incorrect/timeout
     // TODO: Add button to restart game
     showScore() {
         let target = $("#game");
         target.empty();
 
-        target.append( $("<div>").text("Your final score is: ??") )
-
+        target.append( $("<div>").text("Your final score is:") );
+        target.append( $("<div>").text(`Correct Answers: ${game.correct}`) );
+        target.append( $("<div>").text(`Incorrect Answers: ${game.incorrect}`) );
+        target.append( $("<div>").text(`Unanswered: ${game.timeouts}`) );
         
     },
 
