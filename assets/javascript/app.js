@@ -52,8 +52,10 @@ var game = {
         // Display the question
         target.append($("<div>").text( question.questionText ));
         
+        // Randomize order of answers
+        question.answers = game.randomize(question.answers);
+        
         // Display buttons for each answer
-        // TODO: Randomize order of answers
         for (let i=0; i<question.answers.length; i++) {
             let answerBtn = $("<button>").text( question.answers[i]);
             answerBtn.on("click", game.showAnswer );
