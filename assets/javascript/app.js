@@ -40,6 +40,9 @@ var game = {
 
     // Method setting up the game splash screen and loading questions
     start() {
+        // Initialize game-state
+        game.init();
+
         // Set up splash screen in #game
         let target = $("#game");
         target.empty();
@@ -48,8 +51,17 @@ var game = {
         startButton.on("click", game.showNextQuestion);
         target.append(startButton);
         
+    },
+
+    // Sets game parameters to defaults for new game
+    init() {
         // Copy questions from raw questionData array to questionList array that will be mutated
-        game.questionList = game.randomize([...game.questionData]);
+        this.questionList = this.randomize([...this.questionData]);
+
+        // Re-initialize score trackers to zero
+        this.correct = 0;
+        this.incorrect = 0;
+        this.timeouts = 0;
     },
 
     showNextQuestion() {
