@@ -21,6 +21,50 @@ var game = {
             ],
             img: "flute_heavy_metal.jpg",
             explanation: "In a huge upset, Jethro Tull's album Crest of a Knave won the 1989 Grammy Award for Best Hard Rock/Metal Performance Vocal or Instrumental, beating out heavy favorite Metallica. Even the band themselves didn't expect to win, and chose not to attend the ceremony. After the win, the band's label took out an add depicting frontman Ian Anderson's signature instrument – the flute – declaring \"The flute is a heavy metal instrument\"."
+        },
+        {
+            questionText: "Which terminal illness did Queen singer Freddie Mercury die of in 1991?",
+            answers: [ 
+                "AIDS",
+                "Leukemia",
+                "Lung cancer",
+                "Parkinson's disease"
+            ],
+            img: "freddie_mercury.jpg",
+            explanation: "Freddie Mercurcy passed away from complications arising from AIDS on the 24th of November 1991, after years of public denial that he had contracted the HIV virus. He finally released a statement admitting he had AIDS less than 24 hours before his death."
+        },
+        {
+            questionText: "Which artist had to pay a copyright infringment claim for the cover of their 1984 album?",
+            answers: [ 
+                "U2",
+                "Bruce Springsteen",
+                "The Talking Heads",
+                "Rush"
+            ],
+            img: "unforgettable_fire.jpg",
+            explanation: "The photograph of Ireland's Moydrum Castle used for the cover of U2's 1984 release The Unforgettable Fire was deemed to be infringing of the photograph used on the cover of the 1980 book \"In Ruins: The Once Great Houses of Ireland\", which featured the same castle shot from the same angle and using the same filter effect, the only notable difference being the presence of the band members in U2's version."
+        },
+        {
+            questionText: "Queen member Brian May holds a PhD in what subject from Imperial College London?",
+            answers: [ 
+                "Astrophysics",
+                "Music theory",
+                "English literature",
+                "Economics"
+            ],
+            img: "brian_may.jpg",
+            explanation: "Brian May was studying for a PhD in Astrophysics at Imperial College, studying interplanetary dust in the solar system, when Queen began having major international success. He quit his doctoral studies in 1974 to pursue his music career, but reapplied in 2006, and successfully completed his doctoral thesis in 2007. He credits his ability to complete his thesis after such a long time gap to there being little research done in that particular subfield in the decades separating the beginning and end of his research."
+        },
+        {
+            questionText: "Muppet drummer Animal is speculated to be inspired by which famously wild rock drummer?",
+            answers: [ 
+                "Keith Moon",
+                "Neil Peart",
+                "Ringo Starr",
+                "Phil Collins"
+            ],
+            img: "animal.jpg",
+            explanation: "While the Muppet character Animal is not a copy of any one drummer, he appears to be modeled after Keith Moon in personality, drumming style, and eyebrows."
         }
     ],
 
@@ -142,7 +186,6 @@ var game = {
         setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, 5*1000);
     },
 
-    // TODO: Add button to restart game
     showScore() {
         let target = $("#game");
         target.empty();
@@ -151,7 +194,14 @@ var game = {
         target.append( $("<div>").text(`Correct Answers: ${game.correct}`) );
         target.append( $("<div>").text(`Incorrect Answers: ${game.incorrect}`) );
         target.append( $("<div>").text(`Unanswered: ${game.timeouts}`) );
-        
+
+        // Create Reset button to allow players to try again
+        let resetBtn = $("<button>").text("Play again");
+        resetBtn.on("click", function() {
+            game.init();
+            game.showNextQuestion();
+        });
+        target.append( resetBtn );
     },
 
     // Uses Fisher-Yates shuffling method to randomize array elements
