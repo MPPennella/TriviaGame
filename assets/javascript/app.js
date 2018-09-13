@@ -47,7 +47,6 @@ var game = {
     },
 
     // TODO: Determine if clicked answers are correct or incorrect
-    // TODO: Display timer on page
     showNextQuestion() {
         // Remove a question from the array, set it to be the current question, and create a reference
         let question = game.currentQuestion = game.questionList.pop();
@@ -87,6 +86,7 @@ var game = {
 
     // TODO: Give feedback about answer to preceding question being Correct/Incorrect or if player timed out
     showAnswer() {
+        // Clears timer from previous phase so it won't continue to run
         clearInterval(game.timer);
 
         let question = game.currentQuestion;
