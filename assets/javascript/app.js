@@ -60,7 +60,6 @@ var game = {
         game.timer = setInterval(function() {
             game.timeLeft -= 1;
             if (game.timeLeft <= 0) {
-                clearInterval(game.timer);
                 game.showAnswer();
             }
             console.log(game.timeLeft)
@@ -83,6 +82,8 @@ var game = {
 
     // TODO: Give feedback about answer to preceding question being Correct/Incorrect or if player timed out
     showAnswer() {
+        clearInterval(game.timer);
+
         let question = game.currentQuestion;
 
         let target = $("#game");
@@ -95,7 +96,6 @@ var game = {
         target.append( $("<div>").text(answerExpText) );
 
         // Set timer to move to next phase
-        // Placeholder
         let questionsLeft = game.questionList.length;
         setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, 5*1000);
     },
