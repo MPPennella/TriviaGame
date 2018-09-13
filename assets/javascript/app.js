@@ -38,10 +38,11 @@ var game = {
         target.append(startButton);
         
         // Copy questions from raw questionData array to questionList array that will be mutated
-        // TODO: Randomize order of questions loaded from questionData array
         game.questionList = game.randomize([...game.questionData]);
     },
 
+    // TODO: Determine if clicked answers are correct or incorrect
+    // TODO: Create a timer to display on page, go to answer if no selection by the time it reaches zero
     showNextQuestion() {
         // Remove a question from the array, set it to be the current question, and create a reference
         let question = game.currentQuestion = game.questionList.pop();
@@ -64,6 +65,7 @@ var game = {
         }
     }, 
 
+    // TODO: Give feedback about answer to preceding question being Correct/Incorrect or if player timed out
     showAnswer() {
         let question = game.currentQuestion;
 
@@ -82,13 +84,15 @@ var game = {
         setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, 5*1000);
     },
 
+    // TODO: Implement scoring display tracking correct/incorrect/timeout
+    // TODO: Add button to restart game
     showScore() {
         let target = $("#game");
         target.empty();
 
         target.append( $("<div>").text("Your final score is: ??") )
 
-        // TODO: Add button to restart game
+        
     },
 
     // Uses Fisher-Yates shuffling method to randomize array elements
