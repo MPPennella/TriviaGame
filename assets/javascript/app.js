@@ -87,6 +87,21 @@ var game = {
         target.append( $("<div>").text("Your final score is: ??") )
 
         // TODO: Add button to restart game
+    },
+
+    // Uses Fisher-Yates shuffling method to randomize array elements
+    randomize(array) {
+        // Sorting algorithm
+        for (let i=array.length-1; i>0; i--) {
+            let j = Math.floor( Math.random()*(i+1) )
+
+            // Swap values at indices i and j
+            let temp=array[i];
+            array[i]=array[j];
+            array[j]=temp;    
+        }
+
+        return array;
     }
 }
 
