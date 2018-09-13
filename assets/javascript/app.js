@@ -24,8 +24,13 @@ var game = {
         }
     ],
 
+    // Parameters for storing quiz info
     questionList: [],
     currentQuestion: {},
+
+    // Parameters for timer control
+    timer: 0,
+    timeLeft: 0,
 
     // Method setting up the game splash screen and loading questions
     start() {
@@ -42,13 +47,24 @@ var game = {
     },
 
     // TODO: Determine if clicked answers are correct or incorrect
-    // TODO: Create a timer to display on page, go to answer if no selection by the time it reaches zero
+    // TODO: Display timer on page
     showNextQuestion() {
         // Remove a question from the array, set it to be the current question, and create a reference
         let question = game.currentQuestion = game.questionList.pop();
 
         let target = $("#game");
         target.empty();
+
+        // Setup timer
+        game.timeLeft = 15;
+        game.timer = setInterval(function() {
+            game.timeLeft -= 1;
+            if (game.timeLeft <= 0) {
+                clearInterval(game.timer);
+                game.showAnswer();
+            }
+            console.log(game.timeLeft)
+        }, 1000);
 
         // Display the question
         target.append($("<div>").text( question.questionText ));
