@@ -27,6 +27,7 @@ var game = {
     // Parameters for storing quiz info
     questionList: [],
     currentQuestion: {},
+    correctAnswer: "",
 
     // Parameters for timer control
     timer: 0,
@@ -51,10 +52,11 @@ var game = {
         game.questionList = game.randomize([...game.questionData]);
     },
 
-    // TODO: Determine if clicked answers are correct or incorrect, and add to scoring trackers
     showNextQuestion() {
         // Remove a question from the array, set it to be the current question, and create a reference
         let question = game.currentQuestion = game.questionList.pop();
+        // Save correct answer
+        game.correctAnswer = question.answers[0];
 
         let target = $("#game");
         target.empty();
@@ -64,7 +66,7 @@ var game = {
         game.timer = setInterval(function() {
             game.timeLeft -= 1;
             if (game.timeLeft <= 0) {
-                game.showAnswer();
+                game.showAnswer("TIMEOUT");
             }
             console.log(game.timeLeft)
             $(".timer").text(game.timeLeft);
@@ -83,14 +85,14 @@ var game = {
         // Display buttons for each answer
         for (let i=0; i<question.answers.length; i++) {
             let answerBtn = $("<button>").text( question.answers[i]);
-            answerBtn.on("click", game.showAnswer );
+            answerBtn.on("click", game.showAnswer.bind(null, answerBtn.text()) );
 
             target.append(answerBtn);
         }
     }, 
 
-    // TODO: Give feedback about answer to preceding question being Correct/Incorrect or if player timed out
-    showAnswer() {
+    
+    showAnswer(scoreInput) {
         // Clears timer from previous phase so it won't continue to run
         clearInterval(game.timer);
 
@@ -99,6 +101,24 @@ var game = {
         let target = $("#game");
         target.empty();
 
+        // Add to score depending on scoreInput value and display answer correctness to player
+        let scoreFeedback = $("<div>");
+        // "TIMEOUT" indicates player timed out
+        if (scoreInput == "TIMEOUT") {
+            game.timeouts++;
+            scoreFeedback.text("You ran out of time");
+        }
+        // Otherwise, check if answer passed matches stored correct answer
+        else if (scoreInput == game.correctAnswer) {
+            game.correct++;
+            scoreFeedback.text("Correct!");
+        }
+        else {
+            game.incorrect++;
+            scoreFeedback.text("Incorrect!");
+        }
+        target.append(scoreFeedback);
+        
         let answerImg = $("<img>").attr( {src: "assets/images/"+question.img, alt: question.answers[0] } );
         let answerExpText = question.explanation;
 
