@@ -65,6 +65,17 @@ var game = {
             ],
             img: "animal.jpg",
             explanation: "While the Muppet character Animal is not a copy of any one drummer, he appears to be modeled after Keith Moon in personality, drumming style, and eyebrows."
+        },
+        {
+            questionText: "Which Pink Floyd member was fired from the band after The Wall was recorded?",
+            answers: [ 
+                "Richard Wright",
+                "Roger Waters",
+                "David Gilmour",
+                "Nick Mason"
+            ],
+            img: "pink_floyd.jpg",
+            explanation: "Keyboardist Richard Wright was let go during production of The Wall for his increasing lack of contributions to the band as relationships between the members deteriorated. To keep up appearances, he was retained as a salaried performer for The Wall tour, which, ironically, meant he was the only band member to turn a profit from that financially disastrous tour. After the later departure of Waters from the band, Wright began contributing to the band again and was rehired."
         }
     ],
 
