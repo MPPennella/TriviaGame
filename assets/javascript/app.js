@@ -102,7 +102,7 @@ var game = {
         let target = $("#game");
         target.empty();
 
-        let startButton = $("<button>").text("Start");
+        let startButton = $("<button>").addClass("startBtn").text("Start");
         startButton.on("click", game.showNextQuestion);
         target.append(startButton);
         
@@ -207,7 +207,7 @@ var game = {
         target.append( $("<div>").text(`Unanswered: ${game.timeouts}`) );
 
         // Create Reset button to allow players to try again
-        let resetBtn = $("<button>").text("Play again");
+        let resetBtn = $("<button>").addClass("resetBtn").text("Play again");
         resetBtn.on("click", function() {
             game.init();
             game.showNextQuestion();
