@@ -175,7 +175,7 @@ var game = {
         }
         target.append(scoreFeedback);
         
-        let answerImg = $("<img>").attr( {src: "assets/images/"+question.img, alt: question.answers[0] } );
+        let answerImg = $("<img>").attr( {src: "assets/images/"+question.img, alt: game.correctAnswer } );
         let answerExpText = question.explanation;
 
         target.append(answerImg);
