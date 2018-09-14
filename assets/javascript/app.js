@@ -151,7 +151,7 @@ var game = {
 
         // Display buttons for each answer
         for (let i=0; i<question.answers.length; i++) {
-            let answerBtn = $("<button>").text( question.answers[i]);
+            let answerBtn = $("<button>").addClass("answerBtn").text( question.answers[i]);
             answerBtn.on("click", game.showAnswer.bind(null, answerBtn.text()) );
 
             target.append(answerBtn);
