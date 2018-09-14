@@ -186,7 +186,7 @@ var game = {
         }
         target.append(scoreFeedback);
         
-        let answerImg = $("<img>").attr( {src: "assets/images/"+question.img, alt: game.correctAnswer } );
+        let answerImg = $("<img>").addClass("answerImg").attr( {src: "assets/images/"+question.img, alt: game.correctAnswer } );
         let answerExpText = question.explanation;
 
         target.append(answerImg);
