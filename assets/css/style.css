@@ -11,9 +11,11 @@ header {
 
 section {
     width: 600px;
-    height: 430px;
+    height: 450px;
     margin: 30px auto;
-    background: #ddd;
+    background: #333;
+    color: #ddd;
+    border: 3px solid black;
     padding: 30px 40px;
 }
 
@@ -27,7 +29,7 @@ button {
 }
 
 .startBtn {
-    margin-top: 130px;
+    margin-top: 150px;
 
     height: 100px;
     width: 150px;
@@ -55,8 +57,6 @@ button {
     width: max-content;
     padding: 10px;
 
-    /* border: 3px solid black; */
-
     text-align: center;
 }
 
@@ -64,14 +64,21 @@ button {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+
+    width: max-content;
+    margin: 0 auto;
+    /* border: 3px solid black; */
+    /* padding: 10px; */
+
+    /* background: #888; */
 }
 
 .correct {
-    color: green;
+    color: #44ff44;
 }
 
 .incorrect, .timeout {
-    color: red;
+    color: #ff4444;
 }
 
 .resetBtn {
@@ -80,8 +87,11 @@ button {
 
 .answerImg {
     height: 250px;
-    margin: 0 auto;
-    padding: 25px;
+    margin: 20px auto;
+    border: 3px solid black;
+    padding: 10px;
+
+    background: #ddd;
 
     display: block;
 }
