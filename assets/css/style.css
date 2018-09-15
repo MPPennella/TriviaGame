@@ -29,7 +29,7 @@ button {
 }
 
 .startBtn {
-    margin-top: 150px;
+    margin-top: 160px;
 
     height: 100px;
     width: 150px;
@@ -67,10 +67,6 @@ button {
 
     width: max-content;
     margin: 0 auto;
-    /* border: 3px solid black; */
-    /* padding: 10px; */
-
-    /* background: #888; */
 }
 
 .correct {
@@ -79,10 +75,6 @@ button {
 
 .incorrect, .timeout {
     color: #ff4444;
-}
-
-.resetBtn {
-    width: 60px;
 }
 
 .answerImg {
@@ -95,3 +87,18 @@ button {
 
     display: block;
 }
+
+.score {
+    display: block;
+    margin: 80px auto 40px;
+    width: max-content;
+    font-size: 30px;
+    line-height: 150%;
+    text-align: center;
+}
+
+.resetBtn {
+    font-size: 30px;
+    width: max-content;
+}
+

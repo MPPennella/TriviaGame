@@ -87,6 +87,8 @@ var game = {
     // Parameters for timer control
     timer: 0,
     timeLeft: 0,
+    questionMaxTime: 15,
+    answerShowTime: 5,
 
     // Parameters for score tracking
     correct: 0,
@@ -144,7 +146,7 @@ var game = {
         }
 
         // Setup timer
-        game.timeLeft = 15;
+        game.timeLeft = game.questionMaxTime;
         game.timer = setInterval(function() {
             game.timeLeft -= 1;
             if (game.timeLeft <= 0) {
@@ -199,20 +201,21 @@ var game = {
 
         // Set timer to move to next phase
         let questionsLeft = game.questionList.length;
-        setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, 5*1000);
+        setTimeout( questionsLeft>0 ? game.showNextQuestion : game.showScore, game.answerShowTime*1000);
     },
 
     showScore() {
         let target = $("#game");
         target.empty();
 
-        target.append( $("<div>").text("Your final score is:") );
-        target.append( $("<div>").text(`Correct Answers: ${game.correct}`) );
-        target.append( $("<div>").text(`Incorrect Answers: ${game.incorrect}`) );
-        target.append( $("<div>").text(`Unanswered: ${game.timeouts}`) );
+        let scoreDiv = $("<div>").addClass("score");
+        scoreDiv.append( $("<div>").text(`Correct Answers: ${game.correct}`) );
+        scoreDiv.append( $("<div>").text(`Incorrect Answers: ${game.incorrect}`) );
+        scoreDiv.append( $("<div>").text(`Unanswered: ${game.timeouts}`) );
+        target.append( scoreDiv );
 
         // Create Reset button to allow players to try again
-        let resetBtn = $("<button>").addClass("resetBtn").text("Play again");
+        let resetBtn = $("<button>").addClass("resetBtn").text("Play Again");
         resetBtn.on("click", function() {
             game.init();
             game.showNextQuestion();
