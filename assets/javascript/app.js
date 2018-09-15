@@ -128,6 +128,21 @@ var game = {
         let target = $("#game");
         target.empty();
 
+        
+        // Display the question
+        target.append($("<div>").addClass("question").text( question.questionText ));
+        
+        // Randomize order of answers
+        question.answers = game.randomize(question.answers);
+
+        // Display buttons for each answer
+        for (let i=0; i<question.answers.length; i++) {
+            let answerBtn = $("<button>").addClass("answerBtn").text( question.answers[i]);
+            answerBtn.on("click", game.showAnswer.bind(null, answerBtn.text()) );
+
+            target.append(answerBtn);
+        }
+
         // Setup timer
         game.timeLeft = 15;
         game.timer = setInterval(function() {
@@ -146,19 +161,6 @@ var game = {
 
         target.append(timerDiv);
 
-        // Display the question
-        target.append($("<div>").addClass("question").text( question.questionText ));
-        
-        // Randomize order of answers
-        question.answers = game.randomize(question.answers);
-
-        // Display buttons for each answer
-        for (let i=0; i<question.answers.length; i++) {
-            let answerBtn = $("<button>").addClass("answerBtn").text( question.answers[i]);
-            answerBtn.on("click", game.showAnswer.bind(null, answerBtn.text()) );
-
-            target.append(answerBtn);
-        }
     }, 
 
     
@@ -172,20 +174,20 @@ var game = {
         target.empty();
 
         // Add to score depending on scoreInput value and display answer correctness to player
-        let scoreFeedback = $("<div>");
+        let scoreFeedback = $("<div>").addClass("feedback");
         // "TIMEOUT" indicates player timed out
         if (scoreInput == "TIMEOUT") {
             game.timeouts++;
-            scoreFeedback.text("You ran out of time");
+            scoreFeedback.text("Time's Up!").addClass("timeout");
         }
         // Otherwise, check if answer passed matches stored correct answer
         else if (scoreInput == game.correctAnswer) {
             game.correct++;
-            scoreFeedback.text("Correct!");
+            scoreFeedback.text("Correct!").addClass("correct");
         }
         else {
             game.incorrect++;
-            scoreFeedback.text("Incorrect!");
+            scoreFeedback.text("Incorrect!").addClass("incorrect");
         }
         target.append(scoreFeedback);
         
