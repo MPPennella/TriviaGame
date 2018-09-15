@@ -41,7 +41,7 @@ var game = {
                 "The Talking Heads",
                 "Rush"
             ],
-            img: "unforgettable_fire.jpg",
+            img: "unforgettable_fire.png",
             explanation: "The photograph of Ireland's Moydrum Castle used for the cover of U2's 1984 release The Unforgettable Fire was deemed to be infringing of the photograph used on the cover of the 1980 book \"In Ruins: The Once Great Houses of Ireland\", which featured the same castle shot from the same angle and using the same filter effect, the only notable difference being the presence of the band members in U2's version."
         },
         {
@@ -74,7 +74,7 @@ var game = {
                 "David Gilmour",
                 "Nick Mason"
             ],
-            img: "pink_floyd.jpg",
+            img: "richard_wright.jpg",
             explanation: "Keyboardist Richard Wright was let go during production of The Wall for his increasing lack of contributions to the band as relationships between the members deteriorated. To keep up appearances, he was retained as a salaried performer for The Wall tour, which, ironically, meant he was the only band member to turn a profit from that financially disastrous tour. After the later departure of Waters from the band, Wright began contributing to the band again and was rehired."
         }
     ],
