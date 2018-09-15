@@ -140,11 +140,14 @@ var game = {
         }, 1000);
 
         // Display timer
-        target.append( $("<div>").text("Time Left: ") );
-        target.append( $("<div>").text(game.timeLeft).addClass("timer") );
+        let timerDiv = $("<div>").addClass("timerDiv");
+        timerDiv.text("Time Left: ");
+        timerDiv.append( $("<span>").text(game.timeLeft).addClass("timer") );
+
+        target.append(timerDiv);
 
         // Display the question
-        target.append($("<div>").text( question.questionText ));
+        target.append($("<div>").addClass("question").text( question.questionText ));
         
         // Randomize order of answers
         question.answers = game.randomize(question.answers);
