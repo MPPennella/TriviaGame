@@ -1,5 +1,7 @@
 # TriviaGame
-A trivia game with timed questions
+A classic-rock-themed trivia game with timed questions
+
+[https://mppennella.github.io/TriviaGame/](https://mppennella.github.io/TriviaGame/)
 
 # Overview
 
